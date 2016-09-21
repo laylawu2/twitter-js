@@ -1,26 +1,43 @@
 {% extends "layout.html" %}
 
+
 {% block content %}
 
   <div class="page-header">
-    <h1>Welcome to Twitter.js!</h1>
+    <h1>Welcome to Personal Opinions!</h1>
   </div>
   <div class="row">
     <div class="col-md-3">
-      <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
-      <b>Your Name</b><br>
+      <img src="/Users/laylawu/Projects/GraceHopper/week-two/twitter-js/image/dog.jpg"><br>
+      <b>Layla Wu</b><br>
       100 followers
     </div>
-    <div class="col-md-9">
 
+    <div class="col-md-9">
+      {% if showForm %}
+      <form action="/tweets" method="POST">
+        <label for="name_field">Name:</label>
+        <input name="name" type="text" id="name_field" value = "your name"/>
+
+        <label for="text_field">Text:</label>
+        <input name="text" type="text" id="text_field" value = "say what you have to say" style="width: 350px;" />
+        <input type="submit" value="Submit" />
+      </form>
+    {% endif %}
+
+    <ul style = "list-style:none">
       <!-- display tweets here -->
       {% for tweet in tweets %}
+        <!--li><a href="/tweets/{{tweet.id}}">{{tweet.id}}</a></li-->
+         <li><a href="/users/{{tweet.name}}">{{tweet.name}}</a></li>
         <li>{{tweet.content}}</li>
+
+        <li><a href="#">retweet</a></li>
       {% endfor %}
-
+      </ul>
     </div>
-  </div>
 
+  </div>
 {% endblock %}
 <!-- <h1>{{ title }}</h1>
 <h2>{{ subTitle}}</h2>

@@ -2,16 +2,21 @@ var _ = require('lodash');
 var data = [];
 
 
-function add (name, content, property) {
-  data.push({ name: name, content: content, property: property });
-}
+function add (name, content) {
+  var id;
+    data.push({ name: name, content: content, id: counter
+    });
+  //console.log(data)
+  }
+
+
 
 function list () {
   return _.cloneDeep(data);
 }
 
-function find (arr, properties) {
-  return _.cloneDeep(_.filter(arr, properties));
+function find (properties) {
+  return _.cloneDeep(_.filter(data, properties));
 }
 
 module.exports = { add: add, list: list, find: find };
@@ -37,10 +42,14 @@ var getProperty = function(){
 	return randArrayEl(property)
 }
 
+var counter = 0
 for (var i = 0; i < 10; i++) {
-  module.exports.add( getFakeName(), getFakeTweet(), getProperty());
+  module.exports.add( getFakeName(), getFakeTweet());
+  counter ++
+  //console.log(i)
 }
 
+console.log(find({id: 3}))
 // console.log(data)
 // console.log("-----------------------------------------")
 // console.log(find(data, {'property':'German Shepherd'}))

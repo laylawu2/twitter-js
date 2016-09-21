@@ -61,7 +61,10 @@
 
       <!-- Begin page content -->
       <div class="container">
-        {% block content %}Welcome to Twitter.js{% endblock %}
+      <section class="left">
+      {% block left %}{% endblock %}
+      </section>
+        {% block content %}{% endblock %}
       </div> <!-- end container -->
 
     </div>
